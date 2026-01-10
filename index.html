@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravn.</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
+
+        /* General body and content elements using Lora */
+        body,
+        .post-body,
+        .post-date,
+        time,
+        .entry-date,
+        .published,
+        .date,
+        .book.e-content,
+        .p.name-dated,
+        .p-name.dated,
+        .e-content {
+            font-family: 'Lora', serif;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        body {
+            font-size: 18px;
+            color: #333;
+            background: #fff;
+            margin: 0;
+            padding: 2rem 1rem;
+        }
+
+        /* Post titles using Futura with fallback to Poppins */
+        .post-title,
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Futura', 'Poppins', sans-serif !important;
+            letter-spacing: -0.04em; /* Default (Poppins) */
+        }
+
+        /* Conditional spacing when Futura is available */
+        @supports (font-family: Futura) {
+            .post-title,
+            h1, h2, h3, h4, h5, h6 {
+                letter-spacing: -0.06em;
+            }
+        }
+
+        /* JS-supported custom colour for H1 full stops */
+        .colored-period {
+            color: #6858B8;
+        }
+
+        /* Heading font-weight hierarchy */
+        h1, .post-title { 
+            font-weight: 800; 
+            font-size: 26px;
+            margin: 0 0 0.5rem;
+            line-height: 1.2;
+        }
+        h2 { 
+            font-weight: 700; 
+            font-size: 20px;
+            margin: 2rem 0 0.5rem;
+            line-height: 1.3;
+        }
+        h3 { font-weight: 600; }
+        h4 { font-weight: 500; }
+        h5 { font-weight: 400; }
+        h6 { font-weight: 300; }
+
+        /* Hyperlink and visited link colors */
+        a,
+        a:visited {
+            color: #6858B8;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+
+        h1 a {
+            text-decoration: none;
+        }
+
+        #wrapper {
+            max-width: 40rem;
+            margin: 0 auto;
+        }
+
+        header {
+            margin-bottom: 2rem;
+        }
+
+        header p {
+            font-family: 'Lora', serif;
+            font-size: 16px;
+            color: #666;
+            margin: 0;
+        }
+
+        article p {
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 768px) {
+            body {
+                font-size: 16px;
+                padding: 1.5rem 1rem;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="wrapper">
+        <header>
+            <h1><a href="/">Ravn.</a></h1>
+            <p>Essential services for new and growing businesses.</p>
+        </header>
+
+        <article>
+            <p>Ravn provides essential services to small and growing businesses so they can focus on what matters most. We work collaboratively with clients, tailoring our services to their needs.</p>
+
+            <h2>Operations</h2>
+            <p>Judy is an experienced business leader who helps clients implement lean, efficient operations.</p>
+            <p>Email: <a href="mailto:judy@ravn.digital">judy@ravn.digital</a><br>
+            Add <a href="https://www.linkedin.com/in/judy-watkins/">Judy on LinkedIn</a></p>
+
+            <h2>Communications</h2>
+            <p>James helps businesses communicate with clarity and authenticity.</p>
+            <p>Email: <a href="mailto:james@ravn.digital">james@ravn.digital</a><br>
+            Add <a href="https://www.linkedin.com/in/jameshollo/">James on LinkedIn</a></p>
+
+            <h2>Follow</h2>
+            <p>Follow Ravn on <a href="https://bsky.app/profile/ravn.digital">Bluesky</a> and <a href="https://www.linkedin.com/company/ravn-digital/">LinkedIn</a>.</p>
+        </article>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Colorize periods in all h1 elements
+            const headings = document.querySelectorAll('h1');
+            headings.forEach(h1 => {
+                h1.innerHTML = h1.textContent.replace(/\./g, '<span class="colored-period">.</span>');
+            });
+        });
+    </script>
+</body>
+</html>
