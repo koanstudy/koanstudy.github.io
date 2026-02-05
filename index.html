@@ -5,126 +5,141 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ravn.</title>
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tufte-css/1.8.0/tufte.min.css"/>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tufte-css/1.8.0/et-book.min.css"/>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/edwardtufte/et-book/et-book.css">
 
     <style>
-        /* Custom overrides to blend Tufte with Ravn Branding */
-        
+        /* TUFTE CSS RESET & BASE 
+           Philosophy: Content first. Data-ink ratio maximized.
+        */
+
         body {
-            /* Tufte's signature cream background */
-            background-color: #fffff8; 
-            /* Center the main column (Tufte defaults to left-aligned) */
-            padding-left: 0; 
+            /* Tufte's Cream Background */
+            background-color: #fffff8;
+            color: #111;
+            
+            /* Typography */
+            font-family: 'et-book', 'Palatino Linotype', 'Palatino', 'Georgia', serif;
+            font-size: 1.4rem; /* approx 22px */
+            line-height: 2rem;
+            
+            /* Layout */
+            max-width: 1400px; /* Wide container to allow for sidenotes if added later */
             margin: 0 auto;
-            max-width: 100%;
+            padding: 2rem 5%;
+            counter-reset: sidenote-counter;
         }
 
-        /* Ensure the main wrapper handles the Tufte width constraints */
-        #wrapper {
-            width: 87.5%;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 12.5%;
-            max-width: 1400px;
-        }
-
+        /* The Main Reading Column */
         article {
-            padding: 5rem 0rem;
-            max-width: 55%; /* Tufte standard reading width */
+            width: 55%; /* Strict measure for readability */
+            padding-right: 5%; /* Gutter */
         }
 
-        /* Brand Color overrides */
-        a, a:visited {
-            color: #6858B8; /* Ravn Purple */
-            text-decoration: none;
-            background: linear-gradient(#fffff8, #fffff8), linear-gradient(#fffff8, #fffff8), linear-gradient(#6858B8, #6858B8);
-            background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
-            background-repeat: no-repeat, no-repeat, repeat-x;
-            text-shadow: 0.03em 0 #fffff8, -0.03em 0 #fffff8, 0 0.03em #fffff8, 0 -0.03em #fffff8, 0.06em 0 #fffff8, -0.06em 0 #fffff8, 0.09em 0 #fffff8, -0.09em 0 #fffff8, 0.12em 0 #fffff8, -0.12em 0 #fffff8, 0.15em 0 #fffff8, -0.15em 0 #fffff8;
-            background-position: 0% 93%, 100% 93%, 0% 93%;
-        }
-
-        /* Typography tweaks */
-        h1 {
+        /* Headers: Gill Sans (Tufte's sans-serif of choice) */
+        h1, h2, h3 {
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
             font-weight: 400;
-            margin-top: 0;
-            margin-bottom: 0;
-            font-size: 3.2rem;
-            letter-spacing: -0.02em;
+            color: #111;
+            letter-spacing: 0.02em;
+        }
+
+        h1 {
+            font-size: 3.0rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        h1 a {
+            text-decoration: none;
+            color: inherit;
+            background: none; /* No link styling on the title */
+        }
+
+        h2 {
+            font-size: 1.6rem;
+            margin-top: 3.0rem;
+            margin-bottom: 1rem;
+            font-style: italic; /* Tufte headers often use italics over bold */
+        }
+
+        /* The Subtitle / Epigraph Style */
+        .subtitle {
+            font-family: 'et-book', 'Palatino', serif;
+            font-size: 1.4rem;
+            font-style: italic;
+            margin-top: -1rem;
+            margin-bottom: 3rem;
+            display: block;
+        }
+
+        /* Links: Tufte Red or Thin Underlines. 
+           We use the 'text-shadow' hack for readable underlines that skip descenders,
+           or the modern text-decoration-skip-ink.
+        */
+        a {
+            color: #111; /* Links are text color */
+            text-decoration: underline;
+            text-decoration-color: #111;
+            text-decoration-thickness: 1px;
+            text-decoration-skip-ink: auto;
         }
         
-        h1 a {
-            /* Remove the underline from the Logo/Title */
-            background: none; 
-            text-shadow: none;
-            color: #111; /* Keep logo black */
+        a:hover {
+            color: #111;
+            text-decoration-thickness: 2px;
         }
 
-        .subtitle {
-            font-size: 1.4rem;
-            margin-top: 0.5rem;
-            margin-bottom: 3rem;
-            font-style: italic;
-            color: #666;
+        /* Semantic spacing */
+        p {
+            margin-top: 1rem;
+            margin-bottom: 1rem;
         }
 
-        /* Section headings */
-        h2 {
-            font-style: italic;
-            font-weight: 400;
-            margin-top: 2.5rem;
-            margin-bottom: 0.5rem;
-            font-size: 2.2rem;
-        }
-
-        .colored-period {
-            color: #6858B8;
-        }
-
-        /* Mobile Adjustments */
+        /* Mobile Responsive */
         @media (max-width: 760px) {
-            body { padding-left: 20px; padding-right: 20px; }
-            #wrapper { width: 100%; padding: 0; }
-            article { width: 100%; max-width: 100%; }
+            body {
+                width: 90%;
+                padding: 1rem 5%;
+                font-size: 1.1rem;
+                line-height: 1.6rem;
+            }
+            article {
+                width: 100%;
+            }
+            h1 {
+                font-size: 2.2rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div id="wrapper">
-        <article>
-            <header>
-                <h1><a href="/">Ravn.</a></h1>
-                <p class="subtitle">Your ideas made clear</p>
-            </header>
 
-            <section>
-                <h2>Editorial refinement</h2>
-                <p>We take your raw draft, transcript, or rough notes and edit and restructure them for maximum flow, clarity, tone, and impact.</p>
+    <article>
+        <header>
+            <h1><a href="/">Ravn.</a></h1>
+            <span class="subtitle">Editorial architecture.</span>
+        </header>
 
-                <h2>Strategic content design</h2>
-                <p>Structuring information for user needs, accessibility compliance, interaction logic, and content hierarchy.</p>
-                
-                <h2>Discovery bolt-on</h2>
-                <p>A focused briefing call to extract your key ideas and messaging.</p>
-    
-                <h2>Social amplification</h2>
-                <p>Turn your long-form content into ready-to-post social assets.</p>
+        <section>
+            <h2>Editorial refinement</h2>
+            <p>We take your raw draft, transcript, or rough notes and edit and restructure them for maximum flow, clarity, tone, and impact. We polish. We do not pad.</p>
 
-                <h2>Get in touch</h2>
-                <p><a href="mailto:james@ravn.digital">Email James</a> to start putting your ideas to work.</p>
-            </section>
-        </article>
-    </div>
+            <h2>Strategic content design</h2>
+            <p>Structuring information for user needs, accessibility compliance, interaction logic, and content hierarchy.</p>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Updated script to handle the link inside the H1 correctly
-            const headings = document.querySelectorAll('h1 a');
-            headings.forEach(anchor => {
-                anchor.innerHTML = anchor.textContent.replace(/\./g, '<span class="colored-period">.</span>');
-            });
-        });
-    </script>
+            <h2>Discovery bolt-on</h2>
+            <p>A focused briefing call to extract your key ideas and messaging. Reduce your source word count—and your total cost—before the work begins.</p>
+
+            <h2>Social amplification</h2>
+            <p>Turn your long-form content into ready-to-post social assets.</p>
+        </section>
+
+        <section style="margin-top: 4rem;">
+            <h2>Get in touch</h2>
+            <p><a href="mailto:james@ravn.digital">Email James</a> to start putting your ideas to work.</p>
+        </section>
+    </article>
+
 </body>
 </html>
