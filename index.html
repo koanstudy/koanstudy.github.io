@@ -4,156 +4,125 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ravn.</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tufte-css/1.8.0/tufte.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tufte-css/1.8.0/et-book.min.css"/>
+
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&family=Poppins:wght@300;400;500;600;700;800&display=swap');
-
-        /* General body and content elements using Lora */
-        body,
-        .post-body,
-        .post-date,
-        time,
-        .entry-date,
-        .published,
-        .date,
-        .book.e-content,
-        .p.name-dated,
-        .p-name.dated,
-        .e-content {
-            font-family: 'Lora', serif;
-            font-weight: 400;
-            line-height: 1.6;
-        }
-
+        /* Custom overrides to blend Tufte with Ravn Branding */
+        
         body {
-            font-size: 18px;
-            color: #333;
-            background: #fff;
-            margin: 0;
-            padding: 2rem 1rem;
+            /* Tufte's signature cream background */
+            background-color: #fffff8; 
+            /* Center the main column (Tufte defaults to left-aligned) */
+            padding-left: 0; 
+            margin: 0 auto;
+            max-width: 100%;
         }
 
-        /* Post titles using Futura with fallback to Poppins */
-        .post-title,
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Futura', 'Poppins', sans-serif !important;
-            letter-spacing: -0.04em; /* Default (Poppins) */
+        /* Ensure the main wrapper handles the Tufte width constraints */
+        #wrapper {
+            width: 87.5%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-left: 12.5%;
+            max-width: 1400px;
         }
 
-        /* Conditional spacing when Futura is available */
-        @supports (font-family: Futura) {
-            .post-title,
-            h1, h2, h3, h4, h5, h6 {
-                letter-spacing: -0.06em;
-            }
+        article {
+            padding: 5rem 0rem;
+            max-width: 55%; /* Tufte standard reading width */
         }
 
-        /* JS-supported custom colour for H1 full stops */
+        /* Brand Color overrides */
+        a, a:visited {
+            color: #6858B8; /* Ravn Purple */
+            text-decoration: none;
+            background: linear-gradient(#fffff8, #fffff8), linear-gradient(#fffff8, #fffff8), linear-gradient(#6858B8, #6858B8);
+            background-size: 0.05em 1px, 0.05em 1px, 1px 1px;
+            background-repeat: no-repeat, no-repeat, repeat-x;
+            text-shadow: 0.03em 0 #fffff8, -0.03em 0 #fffff8, 0 0.03em #fffff8, 0 -0.03em #fffff8, 0.06em 0 #fffff8, -0.06em 0 #fffff8, 0.09em 0 #fffff8, -0.09em 0 #fffff8, 0.12em 0 #fffff8, -0.12em 0 #fffff8, 0.15em 0 #fffff8, -0.15em 0 #fffff8;
+            background-position: 0% 93%, 100% 93%, 0% 93%;
+        }
+
+        /* Typography tweaks */
+        h1 {
+            font-weight: 400;
+            margin-top: 0;
+            margin-bottom: 0;
+            font-size: 3.2rem;
+            letter-spacing: -0.02em;
+        }
+        
+        h1 a {
+            /* Remove the underline from the Logo/Title */
+            background: none; 
+            text-shadow: none;
+            color: #111; /* Keep logo black */
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            margin-top: 0.5rem;
+            margin-bottom: 3rem;
+            font-style: italic;
+            color: #666;
+        }
+
+        /* Section headings */
+        h2 {
+            font-style: italic;
+            font-weight: 400;
+            margin-top: 2.5rem;
+            margin-bottom: 0.5rem;
+            font-size: 2.2rem;
+        }
+
         .colored-period {
             color: #6858B8;
         }
 
-        /* Heading font-weight hierarchy */
-        h1, .post-title { 
-            font-weight: 800; 
-            font-size: 26px;
-            margin: 0 0 0.5rem;
-            line-height: 1.2;
-        }
-        h2 { 
-            font-weight: 700; 
-            font-size: 20px;
-            margin: 2rem 0 0.5rem;
-            line-height: 1.3;
-        }
-        h3 { font-weight: 600; }
-        h4 { font-weight: 500; }
-        h5 { font-weight: 400; }
-        h6 { font-weight: 300; }
-
-        /* Hyperlink and visited link colors */
-        a,
-        a:visited {
-            color: #6858B8;
-            font-weight: bold;
-            text-decoration: underline;
-        }
-
-        h1 a {
-            text-decoration: none;
-        }
-
-        #wrapper {
-            max-width: 40rem;
-            margin: 0 auto;
-        }
-
-        header {
-            margin-bottom: 2rem;
-        }
-
-        header p {
-            font-family: 'Lora', serif;
-            font-size: 16px;
-            color: #666;
-            margin: 0;
-        }
-
-        article p {
-            margin: 1rem 0;
-        }
-
-        @media (max-width: 768px) {
-            body {
-                font-size: 16px;
-                padding: 1.5rem 1rem;
-            }
-
-            h1 {
-                font-size: 24px;
-            }
-
-            h2 {
-                font-size: 18px;
-            }
+        /* Mobile Adjustments */
+        @media (max-width: 760px) {
+            body { padding-left: 20px; padding-right: 20px; }
+            #wrapper { width: 100%; padding: 0; }
+            article { width: 100%; max-width: 100%; }
         }
     </style>
 </head>
 <body>
     <div id="wrapper">
-        <header>
-            <h1><a href="/">Ravn.</a></h1>
-            <p>Your ideas made clear</p>
-        </header>
-
         <article>
-            
-            
-            <h2>Editorial refinement</h2>
-            <p>We take your raw draft, transcript, or rough notes and edit and restructure them for maximum flow, clarity, tone, and impact.</p>
+            <header>
+                <h1><a href="/">Ravn.</a></h1>
+                <p class="subtitle">Your ideas made clear</p>
+            </header>
 
-            <h2>Strategic content design</h2>
-             <p>structuring information for user needs, accessibility compliance, interaction logic, and content hierarchy.</p>       
-            
-            <h2>Discovery bolt-on</h2>
-            <p>A focused briefing call to extract your key ideas and messaging.</p>
+            <section>
+                <h2>Editorial refinement</h2>
+                <p>We take your raw draft, transcript, or rough notes and edit and restructure them for maximum flow, clarity, tone, and impact.</p>
+
+                <h2>Strategic content design</h2>
+                <p>Structuring information for user needs, accessibility compliance, interaction logic, and content hierarchy.</p>
+                
+                <h2>Discovery bolt-on</h2>
+                <p>A focused briefing call to extract your key ideas and messaging.</p>
     
-
                 <h2>Social amplification</h2>
                 <p>Turn your long-form content into ready-to-post social assets.</p>
 
-            <h2>Get in touch</h2>
-            <p><a href="mailto:james@ravn.digital">Email James</a> to start putting your ideas to work.</p>
-        
-        
+                <h2>Get in touch</h2>
+                <p><a href="mailto:james@ravn.digital">Email James</a> to start putting your ideas to work.</p>
+            </section>
         </article>
     </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            // Colorize periods in all h1 elements
-            const headings = document.querySelectorAll('h1');
-            headings.forEach(h1 => {
-                h1.innerHTML = h1.textContent.replace(/\./g, '<span class="colored-period">.</span>');
+            // Updated script to handle the link inside the H1 correctly
+            const headings = document.querySelectorAll('h1 a');
+            headings.forEach(anchor => {
+                anchor.innerHTML = anchor.textContent.replace(/\./g, '<span class="colored-period">.</span>');
             });
         });
     </script>
