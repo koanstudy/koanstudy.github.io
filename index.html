@@ -11,7 +11,7 @@
         /* TUFTE CSS PHILOSOPHY 
            1. Content > Container
            2. Maximize Data-Ink Ratio
-           3. Distinctive Typography (Bembo/ET Book + Gill Sans)
+           3. Consistency: Everything is ET Book (Bembo)
         */
 
         /* RESET & BASE */
@@ -44,14 +44,13 @@
         }
 
         /* TYPOGRAPHY: HEADERS */
-        /* Tufte uses Gill Sans for headers. It is distinct, humanist, and clean. */
+        /* CORRECTION: Tufte uses the same Serif font (Bembo) for headers, not Sans. */
         h1, h2, h3 {
-            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, sans-serif;
-            font-weight: 400; /* Never bold. The size does the work. */
+            font-family: 'et-book', 'Palatino Linotype', 'Palatino', 'Georgia', serif;
+            font-weight: 400;
             color: #111;
             margin-top: 2rem;
-            margin-bottom: 1rem;
-            letter-spacing: 0.03em;
+            margin-bottom: 1.4rem;
         }
 
         /* The Title */
@@ -60,6 +59,7 @@
             line-height: 1;
             margin-top: 3rem;
             margin-bottom: 0.5rem;
+            letter-spacing: -0.02em; /* Slight tightening for large serif */
         }
         
         /* The Link in the H1 needs to be invisible */
@@ -70,17 +70,27 @@
             text-shadow: none;
         }
 
+        /* H2 in Tufte CSS is typically Italicized Serif */
         h2 {
-            font-size: 1.8rem;
-            font-style: italic; /* Tufte headers often lean */
+            font-size: 2.2rem;
+            font-style: italic;
+            font-weight: 400;
             margin-top: 3.5rem;
+            line-height: 1;
+        }
+        
+        /* H3 is usually standard, sometimes italic, smaller */
+        h3 {
+            font-size: 1.7rem;
+            font-style: italic;
+            margin-top: 2.5rem;
         }
 
         /* THE STRAPLINE / EPIGRAPH */
         .subtitle {
             font-family: 'et-book', serif;
             font-size: 1.4rem;
-            font-style: italic;
+            font-style: italic; /* Tufte subtitles are almost always italic */
             display: block;
             margin-bottom: 4rem;
             color: #333;
@@ -111,6 +121,16 @@
             hyphens: auto;       /* Essential for justified text */
         }
 
+        /* LISTS (Tufte-style) */
+        ul {
+            padding-left: 1.5rem;
+        }
+        
+        li {
+            line-height: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
         /* RESPONSIVE */
         @media (max-width: 768px) {
             body {
@@ -119,7 +139,7 @@
                 padding: 1rem;
             }
             h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.5rem; }
+            h2 { font-size: 1.8rem; }
         }
     </style>
 </head>
